@@ -1,0 +1,13 @@
+
+saps4s1:s4sadm 19> hdbsql -U DEFAULT "select * from E070L"
+LASTNUM,TRKORR
+"TRKORR","S4SK900001"
+1 row selected (overall time 3471 usec; server time 291 usec)
+
+saps4s1:s4sadm 30> hdbsql -U DEFAULT "select * from t000"
+MANDT,MTEXT,ORT01,MWAER,ADRNR,CCCATEGORY,CCCORACTIV,CCNOCLIIND,CCCOPYLOC
+K,CCNOCASCAD,CCSOFTLOCK,CCORIGCONT,CCIMAILDIS,CCTEMPLOCK,CHANGEUSER,CHAN
+GEDATE,LOGSYS
+"000","SAP SE","Walldorf","EUR","","S","2","","X","","","","","","","000
+00000",""
+1 row selected (overall time 3765 usec; server time 275 usec)
