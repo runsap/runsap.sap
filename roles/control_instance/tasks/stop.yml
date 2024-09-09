@@ -1,0 +1,16 @@
+    - name: '{{ action }}' SAP Instance 
+      shell: "source ~/.sapenv.sh && sapcontrol -nr {{ control_instance_nr }} -function StopSystem"
+      become: true
+      become_user: "{{ control_sid }}adm"
+      args:
+        executable: /bin/bash
+
+    - name: Wait for stopped 
+      shell: "source ~/.sapenv.sh && sapcontrol -nr {{ control_instance_nr }} -function WaitforStopped {{ control_waittimeout }} 2"
+      register: outs
+      become: true
+      become_user: "{{ control_sid }}adm" 
+      args:
+        executable: /bin/bash
+
+    - debug: var=outs  
