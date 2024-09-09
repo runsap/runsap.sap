@@ -26,3 +26,5 @@
 
 - debug: var=item.stdout
   loop: "{{ command_result.results }}"
+  loop_control:
+    label: "{{ item.item }}"  
