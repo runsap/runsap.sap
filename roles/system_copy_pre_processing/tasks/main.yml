@@ -1,6 +1,12 @@
 # alleen ter referentie
 # - include_tasks: export_e70l_content.yml
 
+- name: Create a directory and its parents if needed
+  file:
+    path: "{{ scripts_dir }}"
+    state: directory
+    mode: '0755'
+
 - include_tasks: export_tables.yml
 
 
