@@ -5,6 +5,7 @@
   file:
     path: "{{ scripts_dir }}"
     state: directory
+    owner: "{{ source_sap_sid }}"
     mode: '0755'
 
 - include_tasks: export_tables.yml
