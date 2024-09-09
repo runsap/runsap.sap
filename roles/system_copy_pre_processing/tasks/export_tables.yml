@@ -24,7 +24,7 @@
     - export_tables
 
 
-- debug: var=item.stdout
-  loop: "{{ command_result.results }}"
-  loop_control:
-    label: "{{ item.item }}"  
+# - debug: var=item.stdout
+#   loop: "{{ command_result.results }}"
+#   loop_control:
+#     label: "{{ item.item }}"  
