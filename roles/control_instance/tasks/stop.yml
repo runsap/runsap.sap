@@ -13,4 +13,4 @@
       args:
         executable: /bin/bash
 
-    - debug: var=outs  
+    - debug: var=outs.stdout
