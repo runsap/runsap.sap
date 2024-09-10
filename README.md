@@ -1,3 +1,11 @@
-# Ansible Collection - runsap.sap
+Ansible Collection - runsap.sap
+===============================
 
-Documentation for the collection.
+Introduction
+------------
+Documentation for the runsap.sap collection. Currently the collection holds the follwoing roles:
+
+- control_instance
+- system_copy
+
+
