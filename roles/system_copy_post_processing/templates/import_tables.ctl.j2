@@ -1,7 +1,0 @@
-# Commentaar regel
-IMPORT
-CLIENT=ALL
-FILE='{{ scripts_dir }}/{{ target_sap_sid }}_export_tables.dat'
-{% for table in refresh_tables %}
-SELECT * FROM {{ table }}
-{% endfor %}
