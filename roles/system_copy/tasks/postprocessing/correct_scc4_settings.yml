@@ -6,7 +6,6 @@
       {%- if secure_connection -%}
       -e -ssltrustcert
       {%- endif -%}
-    # , CCNOCLIIND = '2', CHANGEUSER = 'AUTOMATESAP'
     sql: >-
       UPDATE T000
       SET CCCORACTIV = '2', CCNOCLIIND = '2', CHANGEUSER = 'AUTOMATESAP'
