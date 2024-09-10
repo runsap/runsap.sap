@@ -1,0 +1,18 @@
+- name: Truncate tables
+  shell: "{{ hdbsql_command }}"
+  vars:
+    secure_params: >-
+      {%- if secure_connection -%}
+      -e -ssltrustcert
+      {%- endif -%}
+    hdbsql_command: >-
+      source ~/.sapenv.csh && 
+      hdbsql {{ secure_params }} -U {{ hdbsql_key }} -d {{ database | upper }}
+      'TRUNCATE TABLE {{ item }}'
+    database: "{{ target_database }}"
+  loop: "{{ truncate_tables }}"
+  args:
+    executable: /bin/csh      
+  become: true
+  become_user: "{{ target_sap_sid }}adm"   
+  
