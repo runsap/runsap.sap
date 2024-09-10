@@ -8,4 +8,9 @@ Documentation for the runsap.sap collection. Currently the collection holds the 
 - control_instance
 - system_copy
 
+License
+-------
+
+Author
+------
 

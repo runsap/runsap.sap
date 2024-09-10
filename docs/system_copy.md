@@ -5,6 +5,32 @@ Introduction
 ------------
 This documentation is part of the system copy procedure that can be used to refresh a SAP ABAP system and reuse certain tables.
 
+The refresh procedure has the following steps:
+
+1. pre processing
+2. backup sap hana tenant database
+3. stop sap system
+4. restore sap hana backup
+5. post processing 
+
+Using the workflow you can run the steps individual or all steps sequential using the **full** option.
+
+Running the pre and post configuration parts you need to provide a `refresh_tables` and `truncate_tables` variable.
+
+In the example below a `sap_table_groups` variable holds all defined tables that are grouped into groups. From this variable the tables are then collected.
+
+Implementation
+--------------
+In your `ansible/requirements.yml` include this repo:
+
+```yaml
+  - name: https://github.com/runsap/runsap.core.git
+    version: vx.x.x.
+    type: git
+```
+
+Add the playbook and the workflow to your github repository.
+
 Example playbook and workflow
 -----------------------------
 
