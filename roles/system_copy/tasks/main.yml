@@ -1,0 +1,8 @@
+---
+
+- include_tasks: preprocessing/main.yml
+  when: system_copy_action == 'preprocessing'
+
+- include_tasks: postprocessing/main.yml
+  when: system_copy_action == 'postprocessing'
+

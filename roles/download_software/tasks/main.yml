@@ -1,0 +1,37 @@
+- name: Install Python package manager pip3 to system Python
+  ansible.builtin.package:
+    name: python3-pip
+    state: present
+    
+- name: Install Python dependencies for Ansible Modules to system Python
+  ansible.builtin.pip:
+    name:
+      - urllib3
+      - requests
+      - beautifulsoup4
+      - lxml
+      
+- name: Ensure download location folder exists
+  ansible.builtin.file:
+    path: "{{ host_data.ec2.tags.Software_share }}/{{ item.location }}"
+    state: directory
+    mode: '0755'
+  loop: "{{ sap_launchpad_downloads }}"
+  loop_control:
+    label: "{{ item.location }}"
+
+- name: Execute Ansible Module to download SAP software
+  community.sap_launchpad.software_center_download:
+    suser_id: "{{ suser_id }}"
+    suser_password: "{{ suser_password }}"
+    softwarecenter_search_query: "{{ item.download }}"
+    dest: "{{ host_data.ec2.tags.Software_share }}/{{ item.location }}"
+  loop: "{{ sap_launchpad_downloads }}"
+  loop_control:
+    label: "{{ item }} : {{ download_task.msg }}"
+  register: download_task
+  retries: 1
+  until: download_task is not failed
+  vars:
+    suser_id: "{{ vault.suser_id }}" 
+    suser_password: "{{ vault.suser_password }}"

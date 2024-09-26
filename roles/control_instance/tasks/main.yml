@@ -1,0 +1,7 @@
+---
+
+- include_tasks: start.yml
+  when: control_action == 'StartSystem'
+
+- include_tasks: stop.yml
+  when: control_action == 'StopSystem'
