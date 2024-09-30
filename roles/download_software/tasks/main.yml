@@ -33,5 +33,5 @@
   retries: 1
   until: download_task is not failed
   vars:
-    suser_id: "{{ vault.suser_id }}" 
-    suser_password: "{{ vault.suser_password }}"
+    suser_id: "{{ suser_id }}" 
+    suser_password: "{{ suser_password }}"

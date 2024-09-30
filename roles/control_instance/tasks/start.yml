@@ -14,3 +14,4 @@
         executable: /bin/bash
 
     - debug: var=outs.stdout
+    
