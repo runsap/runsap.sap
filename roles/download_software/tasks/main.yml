@@ -10,10 +10,11 @@
       - requests
       - beautifulsoup4
       - lxml
+    extra_args: -i https://pypi.org/simple 
       
 - name: Ensure download location folder exists
   ansible.builtin.file:
-    path: "{{ host_data.ec2.tags.Software_share }}/{{ item.location }}"
+    path: "{{ software_share }}/{{ item.location }}"
     state: directory
     mode: '0755'
   loop: "{{ sap_launchpad_downloads }}"
@@ -25,7 +26,7 @@
     suser_id: "{{ suser_id }}"
     suser_password: "{{ suser_password }}"
     softwarecenter_search_query: "{{ item.download }}"
-    dest: "{{ host_data.ec2.tags.Software_share }}/{{ item.location }}"
+    dest: "{{ software_share }}/{{ item.location }}"
   loop: "{{ sap_launchpad_downloads }}"
   loop_control:
     label: "{{ item }} : {{ download_task.msg }}"
