@@ -1,3 +1,10 @@
+Role: download_software
+=======================
+
+Introction
+----------
+This is a wrapper role around the `community.sap_launchpad.software_center_download` role. This role makes sure all prerequisites are in plae and creates the download directory when needed.
+
 Example
 -------
 
