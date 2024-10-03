@@ -8,7 +8,7 @@
       {%- endif -%}
     sql: >-
       UPDATE T000
-      SET CCCORACTIV = '2', CCNOCLIIND = '2', CHANGEUSER = 'AUTOMATESAP'
+      SET CCCORACTIV = '2', CCNOCLIIND = '2', CHANGEUSER = 'RUNSAP'
       WHERE MANDT = '{{ client }}'    
     hdbsql_command: >-
       source ~/.sapenv.csh && 
