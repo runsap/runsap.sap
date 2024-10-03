@@ -1,17 +1,13 @@
     - name: SAP Instance '{{ control_action }}'
-      shell: "source ~/.sapenv.sh && sapcontrol -nr {{ control_instance_nr }} -function {{ control_action }}"
+      shell: "/usr/sap/hostctrl/exe/sapcontrol -nr {{ control_instance_nr }} -function {{ control_action }}"
       become: true
       become_user: "{{ control_sid }}adm"
-      args:
-        executable: /bin/bash
 
     - name: Wait for stopped 
-      shell: "source ~/.sapenv.sh && sapcontrol -nr {{ control_instance_nr }} -function WaitforStarted {{ control_waittimeout }} 2"
+      shell: "/usr/sap/hostctrl/exe/sapcontrol -nr {{ control_instance_nr }} -function WaitforStarted {{ control_waittimeout }} 2"
       register: outs
       become: true
       become_user: "{{ control_sid }}adm" 
-      args:
-        executable: /bin/bash
 
     - debug: var=outs.stdout
     
