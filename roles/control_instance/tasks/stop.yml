@@ -2,15 +2,15 @@
       shell: "/usr/sap/hostctrl/exe/sapcontrol -nr {{ control_instance_nr }} -function {{ control_action }}"
       become: true
       become_user: "{{ control_sid }}adm"
-      args:
-        executable: /bin/csh
+      # args:
+      #   executable: /bin/csh
 
     - name: Wait for stopped 
       shell: "/usr/sap/hostctrl/exe/sapcontrol -nr {{ control_instance_nr }} -function WaitforStopped {{ control_waittimeout }} 2"
       register: outs
       become: true
       become_user: "{{ control_sid }}adm" 
-      args:
-        executable: /bin/csh
+      # args:
+      #   executable: /bin/csh
 
     - debug: var=outs.stdout
