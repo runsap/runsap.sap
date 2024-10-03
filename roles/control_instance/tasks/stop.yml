@@ -1,5 +1,5 @@
     - name: SAP Instance '{{ control_action }}'
-      shell: "source ~/.sapenv.sh && sapcontrol -nr {{ control_instance_nr }} -function StopSystem"
+      shell: "source ~/.sapenv.sh && sapcontrol -nr {{ control_instance_nr }} -function {{ control_action }}"
       become: true
       become_user: "{{ control_sid }}adm"
       args:
