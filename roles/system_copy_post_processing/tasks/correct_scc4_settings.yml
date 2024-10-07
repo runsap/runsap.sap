@@ -6,9 +6,10 @@
       {%- if secure_connection -%}
       -e -ssltrustcert
       {%- endif -%}
+    # , CCNOCLIIND = '2', CHANGEUSER = 'AUTOMATESAP'
     sql: >-
       UPDATE T000
-      SET CCCORACTIV = '2', CCNOCLIIND = '2', CHANGEUSER = 'RUNSAP'
+      SET CCCORACTIV = '2', CCNOCLIIND = '2', CHANGEUSER = 'AUTOMATESAP'
       WHERE MANDT = '{{ client }}'    
     hdbsql_command: >-
       source ~/.sapenv.csh && 
