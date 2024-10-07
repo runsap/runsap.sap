@@ -1,0 +1,22 @@
+
+- name: Correct SCC4 settings
+  shell: "{{ hdbsql_command }}"
+  vars:
+    secure_params: >-
+      {%- if secure_connection -%}
+      -e -ssltrustcert
+      {%- endif -%}
+    sql: >-
+      UPDATE T000
+      SET CCCORACTIV = '2', CCNOCLIIND = '2', CHANGEUSER = 'RUNSAP'
+      WHERE MANDT = '{{ client }}'    
+    hdbsql_command: >-
+      source ~/.sapenv.csh && 
+      hdbsql {{ secure_params }} -U {{ hdbsql_key }} -d {{ database | upper }}
+      "{{ sql }}"     
+    database: "{{ target_database }}"
+  args:
+    executable: /bin/csh      
+  become: true
+  become_user: "{{ target_sap_sid }}adm"   
+  
