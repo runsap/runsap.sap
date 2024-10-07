@@ -5,7 +5,6 @@
     control_action == 'StartSystem' or
     control_action == 'Start'
 
-
 - include_tasks: stop.yml
   when: >
     control_action == 'StopSystem' or

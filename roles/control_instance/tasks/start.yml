@@ -10,4 +10,4 @@
       become_user: "{{ control_sid }}adm" 
 
     - debug: var=outs.stdout
-    
+  

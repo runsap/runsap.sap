@@ -55,4 +55,3 @@ Example playbook
     #refresh_tables: "{{ refresh_tables }}"
     system_copy_action: postprocessing    
 ```
-

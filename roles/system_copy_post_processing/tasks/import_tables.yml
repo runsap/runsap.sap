@@ -1,0 +1,23 @@
+- name: Creating input files for templates
+  template:
+    src: "{{ item }}.ctl.j2"
+    dest: "{{ scripts_dir }}/{{ target_sap_sid }}_{{ item }}.ctl"
+    owner: "{{ target_sap_sid }}adm"
+  loop:
+    - import_rsectab
+    - import_tables
+
+- name: Import tables
+  shell: "source ~/.sapenv.csh && R3trans -v -w {{ scripts_dir }}/{{ prefix }}_import.log {{ scripts_dir }}/{{ filename }}.ctl"
+  become: true
+  become_user: "{{ target_sap_sid }}adm"
+  register: command_result
+  failed_when: command_result.rc >= 8
+  vars:
+    prefix: "{{ target_sap_sid }}"
+    filename: "{{ prefix }}_{{item}}"
+  args:
+    executable: /bin/csh
+  loop:
+    - import_rsectab
+    - import_tables
