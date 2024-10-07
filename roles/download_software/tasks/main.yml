@@ -2,7 +2,7 @@
   ansible.builtin.package:
     name: python3-pip
     state: present
-    
+
 - name: Install Python dependencies for Ansible Modules to system Python
   ansible.builtin.pip:
     name:
@@ -10,8 +10,8 @@
       - requests
       - beautifulsoup4
       - lxml
-    extra_args: -i https://pypi.org/simple 
-      
+    extra_args: -i https://pypi.org/simple
+
 - name: Ensure download location folder exists
   ansible.builtin.file:
     path: "{{ software_share }}/{{ item.location }}"
@@ -26,7 +26,7 @@
     suser_id: "{{ suser_id }}"
     suser_password: "{{ suser_password }}"
     softwarecenter_search_query: "{{ item.download }}"
-    dest: "{{ host_data.ec2.tags.Software_share }}/{{ item.location }}"
+    dest: "{{ software_share }}/{{ item.location }}"
   loop: "{{ sap_launchpad_downloads }}"
   loop_control:
     label: "{{ item }} : {{ download_task.msg }}"
@@ -34,5 +34,5 @@
   retries: 1
   until: download_task is not failed
   vars:
-    suser_id: "{{ vault.suser_id }}" 
-    suser_password: "{{ vault.suser_password }}"
+    suser_id: "{{ suser_id }}"
+    suser_password: "{{ suser_password }}"

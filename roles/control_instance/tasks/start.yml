@@ -3,11 +3,10 @@
       become: true
       become_user: "{{ control_sid }}adm"
 
-    - name: Wait for stopped 
+    - name: Wait for stopped
       shell: "/usr/sap/hostctrl/exe/sapcontrol -nr {{ control_instance_nr }} -function WaitforStarted {{ control_waittimeout }} 2"
       register: outs
       become: true
-      become_user: "{{ control_sid }}adm" 
+      become_user: "{{ control_sid }}adm"
 
     - debug: var=outs.stdout
-  
