@@ -1,3 +1,5 @@
+- include_tasks: update_hdbuserstore_key.yml
+
 - include_tasks: import_tables.yml
 
 - include_tasks: correct_scc4_settings.yml
@@ -5,5 +7,3 @@
 - include_tasks: correct_originals.yml
 
 - include_tasks: truncate_tables.yml
-
-
