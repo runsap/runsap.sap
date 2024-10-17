@@ -1,0 +1,9 @@
+
+- name: Correct SCC4 settings
+  shell: >
+    hdbuserstore SET {{ hdbsql_key_name }}@{{ hdbsql_key_database }}
+    {{ hdbsql_key_user }} {{ hdbsql_key_password }}
+  args:
+    executable: /bin/csh
+  become: true
+  become_user: "{{ target_sap_sid }}adm"

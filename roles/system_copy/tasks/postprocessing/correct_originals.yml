@@ -7,10 +7,10 @@
       -e -ssltrustcert
       {%- endif -%}
     hdbsql_command: >
-      source ~/.sapenv.csh && hdbsql {{ secure_params }} -i {{ instance_nr }} -U {{ hdbsql_key }} -d {{ database | upper }}
-      "UPDATE TADIR SET SRCSYSTEM='{{ target_sap_sid }}' where SRCSYSTEM='{{ source_sap_sid }}'"     
+      source ~/.sapenv.csh && hdbsql {{ secure_params }} -i {{ instance_nr }} -U {{ hdbsql_key_name }} -d {{ database | upper }}
+      "UPDATE TADIR SET SRCSYSTEM='{{ target_sap_sid }}' where SRCSYSTEM='{{ source_sap_sid }}'"
     database: "{{ target_database }}"
   args:
-    executable: /bin/csh  
+    executable: /bin/csh
   become: true
-  become_user: "{{ target_sap_sid }}adm"       
+  become_user: "{{ target_sap_sid }}adm"
